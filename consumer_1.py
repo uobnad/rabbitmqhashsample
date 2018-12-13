@@ -10,12 +10,12 @@ conn = pika.BlockingConnection(pika.ConnectionParameters(host='localhost',creden
 ch   = conn.channel()
 
 queue_name="q1"
-host_name="host_name1"
 
 ch.queue_declare(queue=queue_name, durable=True)
 #ch.queue_purge(queue=queue_name)
 
 ch.queue_bind(exchange="e", queue=queue_name, routing_key="1")
+ch.queue_bind(exchange="e", queue=queue_name, routing_key="2")
 
 print(' [*] Waiting for logs. To exit press CTRL+C')
 def callback(ch, method, properties, body):

@@ -14,6 +14,7 @@ hostname=hashlib.md5(host_name.encode("utf-8")).hexdigest()
 ch.queue_declare(queue=queue_name, durable=True)
 #ch.queue_purge(queue=queue_name)
 
+ch.queue_bind(exchange="e", queue=queue_name, routing_key="1")
 ch.queue_bind(exchange="e", queue=queue_name, routing_key="2")
 
 print(' [*] Waiting for logs. To exit press CTRL+C')
